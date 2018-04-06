@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  def home
-  end
+	def home
+	end
 
 	def alert_type
 	end
@@ -9,5 +9,8 @@ class PagesController < ApplicationController
 	end
 
 	def alert_message
+	end
+
+	def sign_up
 	end
 end
