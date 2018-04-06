@@ -8,7 +8,7 @@ class SessionController < ApplicationController
 			# log in
 			redirect_to alert_type_path
 		else
-			redirect_to signup_path
+			redirect_to login_path
 		end
 	end
 

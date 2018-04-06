@@ -10,7 +10,9 @@
 	<button type="button" class="btn btn-primary btn-lg btn-block">Ballistic missile</button>
 </div>
 
-<span class="btn btn-primary">Back</span>
+<%= link_to alert_type_path, class: "btn btn-primary" do %>
+	<span id="span">Back</span>
+<% end %> 
 
 <span class="btn btn-primary pull-right">Review Alert</span>
  

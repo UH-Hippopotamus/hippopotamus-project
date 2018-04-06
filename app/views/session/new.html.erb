@@ -1,18 +1,26 @@
-<h1>Log in</h1>
+<h1>Hippopotamus Alert System</h1>
 
-<div class="row">
+<div class="login">
   <div class="col-md-6 col-md-offset-3">
+    <div class="form-login row">
+		<h4 class="text-center">Sign In</h4>
     <%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control' %>
+      <%= f.text_field :username, class: 'form-control input-sm chat-input' %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: 'form-control' %>
+      
+			<div class="wrapper">
+      	<span class="group-btn">         
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+					<%= f.submit "Sign In", class: 'btn btn-primary btn-md', style: 'margin-top: 5%' %>
+
+				</span>
+			</div>
     <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+		</div>
   </div>
 </div>
+

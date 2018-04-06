@@ -1,8 +1,9 @@
 
 <h1>Hippopotamus Alert System</h1>
-<h4 class="text-center">User Signup</h4>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <div class="form-login row">
+		<h4 class="text-center">Create Account</h4>
     <%= form_for @account do |f| %>
 
       <%= f.label :username %>
@@ -17,9 +18,15 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Create Account", class: "btn btn-primary" %>
+			<div class="wrapper">
+      	<span class="group-btn">         
+
+					<%= f.submit "Create Account", class: 'btn btn-primary btn-md', style: 'margin-top: 5%' %>
+
+				</span>
+			</div>
+
     <% end %>
   </div>
 </div>
-
 
