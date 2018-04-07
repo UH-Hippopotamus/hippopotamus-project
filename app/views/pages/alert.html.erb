@@ -1,26 +1,20 @@
 <h1>Alert</h1>
 
 <div class="jumbotron">
-	<button type="button" class="btn btn-primary btn-lg btn-block">Landslide</button>
-	<a href="/pages/alert_message" type="button" class="btn btn-primary btn-lg btn-block">Landslide</a>
+  <%= link_to "Landslide", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
 
-	<button type="button" class="btn btn-primary btn-lg btn-block">Flash flood</button>
-	<a href="/pages/alert_message" type="button" class="btn btn-primary btn-lg btn-block">Flash flood</a>
+  <%= link_to "Flash flood", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
 
-	<button type="button" class="btn btn-primary btn-lg btn-block">Tsunami</button>
-	<a href="/pages/alert_message" type="button" class="btn btn-primary btn-lg btn-block">Tsunami</a>
+  <%= link_to "Tsunami", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
 
-	<button type="button" class="btn btn-primary btn-lg btn-block">Ballistic missile</button>
-	<a href="/pages/alert_message" type="button" class="btn btn-primary btn-lg btn-block">Ballistic missile</a>
+  <%= link_to "Ballistic missile", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
 </div>
 
 <%= link_to alert_type_path, class: "btn btn-primary" do %>
 	<span id="span">Back</span>
 <% end %> 
-=======
-<a href="/pages/alert_type"class="btn btn-primary">Back</a>
->>>>>>> static-nav
 
-<span class="btn btn-primary pull-right">Review Alert</span>
-<a href="/pages/alert_message" class="btn btn-primary pull-right">Review Alert</a>
+<span class="group-btn">         
+	<%= link_to "Review alert", alert_message_path, class: "btn btn-primary pull-right"%>
+</span>
  
