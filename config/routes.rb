@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root "session#new"
 	
 	get 'pages/home'
-	get 'alert_type' => 'pages#alert_type'
 
+	get 'login' => 'session#new'
+	get 'alert_type' => 'pages#alert_type'
 	get 'alert' => 'pages#alert'
 
 	get 'alert_message' => 'pages#alert_message'

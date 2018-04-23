@@ -17,6 +17,9 @@
 			</div>
 			<div class="navbar-brand"> Logged In: <%= $current_user %> </div>
 			<div class="navbar-brand"> Alert Type: <%= $alert_selected %> </div>
+			<div class="navbar-brand, pull-right">
+			   <%= link_to "Home", login_url, class: 'navbar-brand', style: 'margin-top: 5%' %>
+			</div>
     </header>
 
 		<div class="container">
