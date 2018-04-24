@@ -1,20 +1,20 @@
 <h1> <%= $alert_selected %> Alert</h1>
 
 <div class="jumbotron">
-  <%= link_to "Landslide", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
+  <%= link_to "Landslide", landslide_button_path, class: "btn btn-primary btn-lg btn-block"%>
 
-  <%= link_to "Flash flood", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
+  <%= link_to "Flash flood", flashflood_button_path, class: "btn btn-primary btn-lg btn-block"%>
 
-  <%= link_to "Tsunami", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
+  <%= link_to "Tsunami", tsunami_button_path, class: "btn btn-primary btn-lg btn-block"%>
 
-  <%= link_to "Ballistic missile", alert_message_path, class: "btn btn-primary btn-lg btn-block"%>
+  <%= link_to "Ballistic missile", missile_button_path, class: "btn btn-primary btn-lg btn-block"%>
 </div>
 
-<%= link_to alert_type_path, class: "btn btn-primary" do %>
+<%= link_to redo_type_path, class: "btn btn-primary" do %>
 	<span id="span">Back</span>
 <% end %> 
 
-<span class="group-btn">         
+<!--<span class="group-btn">
 	<%= link_to "Review alert", alert_message_path, class: "btn btn-primary pull-right"%>
-</span>
+</span>-->
  

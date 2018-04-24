@@ -32,9 +32,12 @@ function myAlert(message) {
 
 	<div class="btn-toolbar">
 
-		<%= link_to "Back", alert_path, class: "btn btn-primary"%>
+		<%= link_to "Back", redo_emergency_path, class: "btn btn-primary"%>
 
-		<button class="btn btn-primary pull-right" onclick="myAlert(document.getElementById('exampleFormControlTextarea1').value)">Send Alert</button>
+		<!-- <button class="btn btn-primary pull-right" onclick="myAlert(document.getElementById('exampleFormControlTextarea1').value)">Send Alert</button> -->
+		<span class="group-btn">
+    	<%= link_to "Send Alert", create_alert_path, class: "btn btn-primary pull-right"%>
+    </span>
 
 		<button class="btn btn-primary pull-right" onclick="myFunction('','','')">Create Message</button>
 
@@ -43,7 +46,7 @@ function myAlert(message) {
 </div>
 
 <div class="form-group">
-	
+
 	<div class="btn-toolbar">
 		<button class="btn btn-primary pull-left" onclick="myFunction('Test','tsunami','Manoa')">Test Warning 1</button>
 	</div>

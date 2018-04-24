@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  alert_type: MyString
+  emergency_type: MyString
+  affected_areas: MyString
+  alert_message: MyString
+  user: MyString
+  status: MyString
+
+two:
+  alert_type: MyString
+  emergency_type: MyString
+  affected_areas: MyString
+  alert_message: MyString
+  user: MyString
+  status: MyString

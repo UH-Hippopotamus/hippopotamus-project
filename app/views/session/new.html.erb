@@ -13,12 +13,16 @@
       <%= f.password_field :password, class: 'form-control' %>
       
 			<div class="wrapper">
-      	<span class="group-btn">         
-
+      	<span class="group-btn">
 					<%= f.submit "Sign In", class: 'btn btn-primary btn-md', style: 'margin-top: 5%' %>
-
 				</span>
+
 			</div>
+      <div class="wrapper">
+              <span class="group-btn">
+                <%= link_to "Sign Up", signup_url, class: 'btn btn-primary btn-md', style: 'margin-top: 5%' %>
+              </span>
+      </div>
     <% end %>
 		</div>
   </div>
