@@ -1,9 +1,14 @@
 class PagesController < ApplicationController
 
   def new
-		@alert = Alert.new(alert_type: "TEST", emergency_type: "TEST", affected_areas: "NONE", alert_message: "Generic Message", user: "", status: "")
+    puts "PAGES_CONTROLLER NEW FUNCTION________________________________________"
+		@alert = Alert.new(alert_type: "Blank", emergency_type: "Blank", affected_areas: "NONE", alert_message: "Message", user: "Blank", status: "active")
+		redirect_to alert_type_path
 	end
-
+   def index
+        puts "PAGES_CONTROLLER INDEX FUNCTION________________________________________"
+        @alert = Alert.new
+    end
 =begin
     These methods set the metadata for the alert that is being constructed.
 =end
@@ -53,7 +58,9 @@ class PagesController < ApplicationController
   end
 
   def create_alert
-    @alert = Alert.new(alert_type: $alert_selected, emergency_type: $emergency_selected, affected_areas: "NONE", alert_message: "Generic Message", user: $current_user, status: "active")
+    puts "______________________________________________"
+    puts alert_params
+    @alert = Alert.new(alert_type: $alert_selected, emergency_type: $emergency_selected, affected_areas: "NONE", alert_message: :alert_params, user: $current_user, status: "active")
     if @alert.save
       redirect_to reset_app_path
     else
@@ -61,9 +68,19 @@ class PagesController < ApplicationController
     end
   end
 
+  def create
+    @alert = Alert.new(alert_type: $alert_selected, emergency_type: $emergency_selected, affected_areas: "NONE", alert_message: alert_params, user: $current_user, status: "active")
+    if @alert.save
+          redirect_to reset_app_path
+        else
+          render 'new'
+     end
+  end
+
   private
     def alert_params
-      params.require(:alert).permit($alert_selected, $emergency_selected, "NONE", :password_confirmation)
+      puts "PARAMS.PERMIT RUNNING"
+        params.require(:alert).permit(:message)
+      puts params['message']
     end
-
 end

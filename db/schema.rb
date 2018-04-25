@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180424215611) do
+=======
+ActiveRecord::Schema.define(version: 20180424054238) do
+>>>>>>> db7de2aa6ffc0b3ec139f6d0232b3d8e6d2a3911
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180424215611) do
     t.string   "status"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+<<<<<<< HEAD
   end
 
   create_table "locations", force: :cascade do |t|
@@ -39,6 +44,8 @@ ActiveRecord::Schema.define(version: 20180424215611) do
     t.string   "county"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+>>>>>>> db7de2aa6ffc0b3ec139f6d0232b3d8e6d2a3911
   end
 
 end

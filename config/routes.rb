@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 	post    'login' => 'session#create'
 	delete  'logout' => 'session#destroy'
 
+  get 'construct_alert' => 'pages#new'
+
 	get 'test_button' => 'pages#set_alert_test'
 	get 'live_button' => 'pages#set_alert_live'
 	get 'landslide_button' => 'pages#set_landslide_type'
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
 	get 'tsunami_button' => 'pages#set_tsunami_type'
 	get 'missile_button' => 'pages#set_missile_type'
   get 'create_alert'  => 'pages#create_alert'
+
+  post 'create_alert'  => 'pages#create_alert'
 
   get 'redo_type' =>  'pages#wipe_alert_type'
 	get 'redo_emergency' => 'pages#wipe_emergency_type'

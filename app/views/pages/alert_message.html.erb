@@ -45,6 +45,22 @@ function myAlert(message) {
 
 </div>
 
+<div class="jumbotron">
+
+<%= form_for @alert do |f| %>
+
+      <%= f.text_area :message, class: 'form-control input-sm chat-input' %>
+
+			<div class="wrapper">
+      	<span class="group-btn">
+					<%= f.Submit "Create Alert", class: 'btn btn-primary btn-md pull-right', style: 'margin-top: 5%' %>
+      </span>
+
+			</div>
+    <% end %>
+
+</div>
+
 <div class="form-group">
 
 	<div class="btn-toolbar">
