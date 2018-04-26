@@ -12,10 +12,10 @@
 </script>
 
 <div class="jumbotron">
-  <form>
+  <form action="create_alert">
     <div class="form-group">
       <label for="exampleFormControlSelect2">Affected Area</label>
-      <select multiple class="form-control" id="exampleFormControlSelect2">
+      <select multiple name="location[]" class="form-control" id="exampleFormControlSelect2">
         <% $locations.each do |location| %>
           <option><%= location.location %></option>
         <% end %>
@@ -24,7 +24,11 @@
 
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Alert Message</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <div class="btn-toolbar">
+      <button type="submit" class="btn btn-primary pull-right">
     </div>
   </form>
 
