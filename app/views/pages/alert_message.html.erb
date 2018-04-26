@@ -1,8 +1,13 @@
 <h1> <%= $alert_selected %> Alert</h1>
 
 <script>
-    function myFunction(testOrLive, alertType, area) {
-        var message = testOrLive + " alert indiacting a " + alertType + " in " + area
+
+    function myFunction() {
+        var type = '<%= $alert_selected %>';
+        var emergency = '<%= $emergency_selected %>'
+        var area = '<%= params[:location] %>'
+        alert(locations);
+        var message = type + " alert indiacting a " + emergency + " in " + area
         document.getElementById('exampleFormControlTextarea1').value = message;
     }
 
@@ -12,42 +17,28 @@
 </script>
 
 <div class="jumbotron">
-  <form>
-    <div class="form-group">
-      <label for="exampleFormControlSelect2">Affected Area</label>
-      <select multiple class="form-control" id="exampleFormControlSelect2">
-        <% $locations.each do |location| %>
-          <option><%= location.location %></option>
-        <% end %>
-      </select>
+  <form action="create_alert">
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label for="exampleFormControlSelect2">Affected Area</label>
+        <select multiple name="location[]" size="20" class="form-control" id="exampleFormControlSelect2">
+          <% $locations.each do |location| %>
+            <option><%= location.location %></option>
+          <% end %>
+        </select>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label for="exampleFormControlTextarea1">Alert Message</label>
+        <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="17"></textarea>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Alert Message</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div class="btn-toolbar">
+      <%= link_to "Back", redo_emergency_path, class: "btn btn-primary" %>
+      <button type="submit" class="btn btn-primary pull-right">Send Alert</button>
     </div>
+
   </form>
-
-  <div class="btn-toolbar">
-    <%= link_to "Back", redo_emergency_path, class: "btn btn-primary" %>
-    <!-- <button class="btn btn-primary pull-right" onclick="myAlert(document.getElementById('exampleFormControlTextarea1').value)">Send Alert</button> -->
-    <span class="group-btn">
-    	<%= link_to "Send Alert", create_alert_path, class: "btn btn-primary pull-right" %>
-    </span>
-    <button class="btn btn-primary pull-right" onclick="myFunction('','','')">Create Message</button>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="btn-toolbar">
-    <button class="btn btn-primary pull-left" onclick="myFunction('Test','tsunami','Manoa')">Test Warning 1</button>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="btn-toolbar">
-    <button class="btn btn-primary pull-left" onclick="myFunction('Live','flash flood','Manoa, Aiea, Pearl City')">Test
-      Warning 2
-    </button>
-  </div>
+  <button class="btn btn-primary pull-right" onclick="myFunction()">Create Message</button>
 </div>

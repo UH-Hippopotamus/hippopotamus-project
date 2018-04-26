@@ -1,9 +1,5 @@
 class PagesController < ApplicationController
 
-  def new
-		@alert = Alert.new(alert_type: "TEST", emergency_type: "TEST", affected_areas: "NONE", alert_message: "Generic Message", user: "", status: "")
-	end
-
 =begin
     These methods set the metadata for the alert that is being constructed.
 =end
@@ -42,6 +38,7 @@ class PagesController < ApplicationController
     The following two methods are called when the back button is clicked in the alert type selection menu or the
     emergency type election menu. It resets the initial value to an empty string to update the nav-bar.
 =end
+
   def wipe_alert_type
     $alert_selected = ""
     redirect_to alert_type_path
@@ -52,18 +49,26 @@ class PagesController < ApplicationController
     redirect_to alert_path
   end
 
+  def generate_message
+    @location = params[:location]
+    puts @location
+    puts "Generate Generic Message: "+"Please be advised. There is a "+$emergency_selected+" warning in effect for the areas: "+@location
+  end
+
   def create_alert
-    @alert = Alert.new(alert_type: $alert_selected, emergency_type: $emergency_selected, affected_areas: "NONE", alert_message: "Generic Message", user: $current_user, status: "active")
+    @message = params[:message]
+    @location = params[:location]
+
+    puts "_______________________________________________________________"
+
+    puts @message
+    puts @location
+    @alert = Alert.new(alert_type: $alert_selected, emergency_type: $emergency_selected, affected_areas: @location, alert_message: @message, user: $current_user, status: "active")
     if @alert.save
       redirect_to reset_app_path
     else
       render 'new'
     end
   end
-
-  private
-    def alert_params
-      params.require(:alert).permit($alert_selected, $emergency_selected, "NONE", :password_confirmation)
-    end
 
 end

@@ -1,6 +1,10 @@
 class SessionController < ApplicationController
 
   def new
+    puts "____DATABASE_CHECK____"
+    Alert.all.each do |alert|
+      puts alert.affected_areas
+    end
   end
 
 	def create
