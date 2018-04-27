@@ -3,7 +3,7 @@ class SessionController < ApplicationController
   def new
     puts "____DATABASE_CHECK____"
     Alert.all.each do |alert|
-      puts alert.affected_areas
+      puts alert.id
     end
     cookies.delete :username
     cookies.delete :alert
@@ -19,7 +19,7 @@ class SessionController < ApplicationController
 		if account && account.authenticate(params[:session][:password])
 			# log in
 			cookies[:username] = account.username
-			redirect_to alert_type_path
+			redirect_to home_path
 		else
 			redirect_to login_path
 		end
