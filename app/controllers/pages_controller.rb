@@ -1,20 +1,16 @@
 class PagesController < ApplicationController
 
-
-
 =begin
     These methods set the metadata for the alert that is being constructed.
 =end
 
 	def set_alert_test
     cookies[:alert] = "TEST"
-		$alert_selected = "TEST"
 		redirect_to alert_path
 	end
 
 	def set_alert_live
     cookies[:alert] = "LIVE"
-		$alert_selected = "LIVE"
 		redirect_to alert_path
   end
 
@@ -54,8 +50,8 @@ class PagesController < ApplicationController
   end
 
   def generate_message
-    $message = ""
-    $message = "Please be advised this is a "+ cookies[:alert] +" alert. There is a "+ cookies[:emergency] +" warning in effect for the areas: " + cookies[:locations]
+    cookies[:message] = ""
+    cookies[:message] = "Please be advised this is a "+ cookies[:alert] +" alert. There is a "+ cookies[:emergency] +" warning in effect for the areas: " + cookies[:locations]
     redirect_to alert_message_path
   end
 
@@ -67,15 +63,11 @@ class PagesController < ApplicationController
   end
 
   def create_alert
-    @message = params[:message]
-    @location = params[:location]
-
-    puts "_______________________________________________________________"
-
-    puts @message
-    puts @location
-    @alert = Alert.new(alert_type: $alert_selected, emergency_type: $emergency_selected, affected_areas: @location, alert_message: @message, user: $current_user, status: "active")
+    puts "____________________________________________________________"
+    puts cookies[:locations]
+    @alert = Alert.new(alert_type: cookies[:alert], emergency_type: cookies[:emergency], affected_areas: cookies[:locations], alert_message: cookies[:message], user: cookies[:username], status: "active")
     if @alert.save
+       @message = ""
       redirect_to reset_app_path
     else
       render 'new'

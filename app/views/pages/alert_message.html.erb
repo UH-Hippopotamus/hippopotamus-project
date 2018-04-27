@@ -11,7 +11,7 @@
 </script>
 <div class="jumbotron">
   <div class="row">
-    <div class="col-md-6 form-group">
+    <div class="form-group">
       <label for="exampleFormControlSelect2">Affected Area</label>
       <select multiple name="location[]" size="20" class="form-control" id="exampleFormControlSelect2">
         <% $locations.each do |location| %>
@@ -19,39 +19,35 @@
         <% end %>
       </select>
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6">
       <label for="exampleFormControlSelect2">Areas Selected</label>
         <%= cookies[:locations] %>
     </div>
     <div>
       <%= form_tag :action => 'parse_comments' do %>
         <%= text_area :myform, :comments, :cols => '0', :rows => '0', :class => 'invisible' %>
-          <button class="btn btn-primary pull-right" onclick="myFunction()"><%= submit_tag "Select Areas", :class => 'btn btn-primary' %></button>
-      <% end %>
+          <button class="btn btn-primary pull-right" onclick="myFunction()"><%= submit_tag "Select Areas", :class => 'btn btn-primary pull-right' %></button>
+        <% end %>
     </div>
   </div>
-</div>
-
-<div class="jumbotron">
+  </br>
+  </br>
+  </br>
 
   <form action="create_alert">
-    <div class="row">
-
-      <div class="col-md-6 form-group">
+      <div class="form-group">
         <label for="exampleFormControlTextarea1">Alert Message</label>
-        <textarea name="message" class="form-control" id="exampleFormControlTextarea11" rows="17"><%= $message %></textarea>
+        <textarea name="message" class="form-control" id="exampleFormControlTextarea11" rows="17"><%= cookies[:message] %></textarea>
       </div>
-    </div>
 
     <div class="btn-toolbar">
-      <%= link_to "Back", redo_emergency_path, class: "btn btn-primary" %>
+      <!--TESTING-->
+      <%= link_to "Generate Message", generate_message_path, :class => 'btn btn-primary'%>
+      <!--TESTING-->
       <button type="submit" class="btn btn-primary pull-right">Send Alert</button>
     </div>
 
   </form>
-
-  <!--TESTING-->
-  <%= link_to "generate_message", generate_message_path, :class => 'btn btn-primary'%>
-  <!--TESTING-->
-  <button class="btn btn-primary pull-right" onclick="myFunction()">Generate Locations</button>
 </div>
+
+<%= link_to "Back", redo_emergency_path, class: "btn btn-primary" %>
