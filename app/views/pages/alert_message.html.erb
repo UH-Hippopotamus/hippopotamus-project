@@ -1,36 +1,45 @@
-<h1> <%= $alert_selected %> Alert</h1>
+<h1> <%= cookies[:alert] %> Alert</h1>
 
 <script>
 
     function myFunction() {
-        var type = '<%= $alert_selected %>';
-        var emergency = '<%= $emergency_selected %>'
-        var area = '<%= params[:location] %>'
-        alert(locations);
-        var message = type + " alert indiacting a " + emergency + " in " + area
-        document.getElementById('exampleFormControlTextarea1').value = message;
+        let messagelocations = $('.form-control').val();
+        messagelocations = messagelocations.join(', ') + " ";
+        document.getElementById('myform_comments').value = messagelocations;
     }
 
-    function myAlert(message) {
-        alert(message);
-    }
 </script>
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-6 form-group">
+      <label for="exampleFormControlSelect2">Affected Area</label>
+      <select multiple name="location[]" size="20" class="form-control" id="exampleFormControlSelect2">
+        <% $locations.each do |location| %>
+          <option value="<%= location.location %>"><%= location.location %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="col-md-6 form-group">
+      <label for="exampleFormControlSelect2">Areas Selected</label>
+        <%= cookies[:locations] %>
+    </div>
+    <div>
+      <%= form_tag :action => 'parse_comments' do %>
+        <%= text_area :myform, :comments, :cols => '0', :rows => '0', :class => 'invisible' %>
+          <button class="btn btn-primary pull-right" onclick="myFunction()"><%= submit_tag "Select Areas", :class => 'btn btn-primary' %></button>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="jumbotron">
+
   <form action="create_alert">
     <div class="row">
-      <div class="col-md-6 form-group">
-        <label for="exampleFormControlSelect2">Affected Area</label>
-        <select multiple name="location[]" size="20" class="form-control" id="exampleFormControlSelect2">
-          <% $locations.each do |location| %>
-            <option><%= location.location %></option>
-          <% end %>
-        </select>
-      </div>
 
       <div class="col-md-6 form-group">
         <label for="exampleFormControlTextarea1">Alert Message</label>
-        <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="17"></textarea>
+        <textarea name="message" class="form-control" id="exampleFormControlTextarea11" rows="17"><%= $message %></textarea>
       </div>
     </div>
 
@@ -40,5 +49,9 @@
     </div>
 
   </form>
-  <button class="btn btn-primary pull-right" onclick="myFunction()">Create Message</button>
+
+  <!--TESTING-->
+  <%= link_to "generate_message", generate_message_path, :class => 'btn btn-primary'%>
+  <!--TESTING-->
+  <button class="btn btn-primary pull-right" onclick="myFunction()">Generate Locations</button>
 </div>

@@ -14,6 +14,7 @@ class SessionController < ApplicationController
 		if account && account.authenticate(params[:session][:password])
 			# log in
 			$current_user = account.username
+			cookies[:username] = account.username
 			redirect_to alert_type_path
 		else
 			redirect_to login_path
