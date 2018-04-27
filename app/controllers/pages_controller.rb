@@ -63,12 +63,13 @@ class PagesController < ApplicationController
   end
 
   def create_alert
+    cookies[:message] = params[:message]
     puts "____________________________________________________________"
-    puts cookies[:locations]
-    @alert = Alert.new(alert_type: cookies[:alert], emergency_type: cookies[:emergency], affected_areas: cookies[:locations], alert_message: cookies[:message], user: cookies[:username], status: "active")
+    puts cookies[:message]
+    @alert = Alert.new(alert_type: cookies[:alert], emergency_type: cookies[:emergency], affected_areas: cookies[:locations], alert_message: cookies[:message], user: cookies[:username], status: "ACTIVE")
     if @alert.save
        @message = ""
-      redirect_to reset_app_path
+      redirect_to back_home_path
     else
       render 'new'
     end

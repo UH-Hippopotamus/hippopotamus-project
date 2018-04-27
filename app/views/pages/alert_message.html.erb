@@ -26,7 +26,7 @@
     <div>
       <%= form_tag :action => 'parse_comments' do %>
         <%= text_area :myform, :comments, :cols => '0', :rows => '0', :class => 'invisible' %>
-          <button class="btn btn-primary pull-right" onclick="myFunction()"><%= submit_tag "Select Areas", :class => 'btn btn-primary pull-right' %></button>
+            <button type="submit" class="btn btn-primary pull-right" onclick="myFunction()">Select Areas</button>
         <% end %>
     </div>
   </div>
@@ -37,7 +37,7 @@
   <form action="create_alert">
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Alert Message</label>
-        <textarea name="message" class="form-control" id="exampleFormControlTextarea11" rows="17"><%= cookies[:message] %></textarea>
+        <textarea name="message" class="form-control" id="exampleFormControlTextarea11" rows="6"><%= cookies[:message] %></textarea>
       </div>
 
     <div class="btn-toolbar">

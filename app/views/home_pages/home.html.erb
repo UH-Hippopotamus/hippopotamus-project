@@ -1,0 +1,43 @@
+<h1>Hippopotamus Alert System</h1>
+
+<div class="jumbotron table-responsive">
+  <span class="group-btn">
+    <%= link_to "Create New Alert", alert_type_path, class: "btn btn-primary centered"%>
+  </span>
+  </br>
+  </br>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr class="bg-dark">
+          <th>Type</th>
+          <th>Emergency</th>
+          <!-- <th>Affected Areas</th> -->
+          <!-- <th>Message</th> -->
+          <th>User</th>
+          <th>Created</th>
+          <th>Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Alert.order(status: :asc, created_at: :asc).each do |alert| %>
+          <form action="deactivate">
+            <tr>
+              <td><%= alert.alert_type %></td>
+              <td><%= alert.emergency_type %></td>
+              <!-- <td><%= alert.affected_areas %></td> -->
+              <!-- <td><%= alert.alert_message %></td> -->
+              <td><%= alert.user %></td>
+              <td><%= alert.created_at %></td>
+              <td><%= alert.updated_at %></td>
+              <td><%= alert.status %></td>
+              <td><button type="submit" class="btn btn-primary btn-sm" style="line-height: 8px" >Deactivate</button></td>
+              <td><input type="hidden" name="id" value="<%= alert.id %>" ></td>
+            </tr>
+          </form>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

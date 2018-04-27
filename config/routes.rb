@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home' => 'home_pages#home'
+
   root "session#new"
 	
 	get 'pages/home'
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
 	post    'login' => 'session#create'
 	delete  'logout' => 'session#destroy'
 
+  get 'deactivate' => 'home_pages#deactivate'
+
 	get 'test_button' => 'pages#set_alert_test'
 	get 'live_button' => 'pages#set_alert_live'
 	get 'landslide_button' => 'pages#set_landslide_type'
@@ -29,13 +33,14 @@ Rails.application.routes.draw do
 	get 'redo_emergency' => 'pages#wipe_emergency_type'
 
 	get 'reset_app' => 'application#reset_app'
+	get 'back_home' => 'application#back_to_home'
 
 	get 'generate_message' => "pages#generate_message"
   get 'parse_comments' => "pages#parse_comments"
   post 'parse_comments' => "pages#parse_comments"
 
 	resources :accounts
-	resources :alert
+	resources :alerts
 	resources :locations
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
