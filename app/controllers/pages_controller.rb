@@ -49,6 +49,12 @@ class PagesController < ApplicationController
     redirect_to alert_path
   end
 
+  def generate_message
+    @location = params[:location]
+    puts @location
+    puts "Generate Generic Message: "+"Please be advised. There is a "+$emergency_selected+" warning in effect for the areas: "+@location
+  end
+
   def create_alert
     @message = params[:message]
     @location = params[:location]
