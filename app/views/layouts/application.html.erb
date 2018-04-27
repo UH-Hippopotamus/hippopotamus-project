@@ -15,9 +15,9 @@
 				<nav>
 				</nav>
 			</div>
-			<div class="navbar-brand"> Logged In: <%= $current_user %> </div>
-			<div class="navbar-brand"> Alert Type: <%= $alert_selected %> </div>
-			<div class="navbar-brand"> Emergency Type: <%= $emergency_selected %> </div>
+			<div class="navbar-brand"> Logged In: <%= cookies[:username] %> </div>
+			<div class="navbar-brand"> Alert Type: <%= cookies[:alert_type] %> </div>
+			<div class="navbar-brand"> Emergency Type: <%= cookies[:emergency] %> </div>
 			<div class="navbar-brand, pull-right">
 			   <%= link_to "Log Out", reset_app_path, class: 'navbar-brand', style: 'margin-top: 5%' %>
 			</div>

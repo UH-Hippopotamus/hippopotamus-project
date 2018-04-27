@@ -5,32 +5,32 @@ class PagesController < ApplicationController
 =end
 
 	def set_alert_test
-		$alert_selected = "TEST"
+		cookies[:alert_type] = "TEST"
 		redirect_to alert_path
 	end
 
 	def set_alert_live
-		$alert_selected = "LIVE"
+		cookies[:alert_type] = "LIVE"
 		redirect_to alert_path
 	end
 
 	def set_landslide_type
-		$emergency_selected = "Landslide"
+		cookies[:emergency] = "Landslide"
 		redirect_to alert_message_path
 	end
 
 	def set_flashflood_type
-  	$emergency_selected = "Flash Flood"
+  	cookies[:emergency] = "Flash Flood"
   	redirect_to alert_message_path
   end
 
   def set_tsunami_type
-  	$emergency_selected = "Tsunami"
+  	cookies[:emergency] = "Tsunami"
   	redirect_to alert_message_path
   end
 
   def set_missile_type
-  	$emergency_selected = "Missile"
+  	cookies[:emergency] = "Missile"
   	redirect_to alert_message_path
   end
 

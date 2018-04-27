@@ -6,10 +6,10 @@ class ApplicationController < ActionController::Base
   $locations = @locations
 
   def reset_app
-    $alert_selected = ""
-    $emergency_selected = ""
+    cookies[:alert_type] = ""
+    cookies[:emergency] = ""
     # log out
-    $current_user = ""
+    cookies[:username] = ""
     redirect_to login_path
   end
 
