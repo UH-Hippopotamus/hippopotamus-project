@@ -5,32 +5,32 @@ class PagesController < ApplicationController
 =end
 
 	def set_alert_test
-		$alert_selected = "TEST"
+    cookies[:alert] = "TEST"
 		redirect_to alert_path
 	end
 
 	def set_alert_live
-		$alert_selected = "LIVE"
+    cookies[:alert] = "LIVE"
 		redirect_to alert_path
-	end
+  end
 
 	def set_landslide_type
-		$emergency_selected = "Landslide"
+    cookies[:emergency] = "Landslide"
 		redirect_to alert_message_path
 	end
 
 	def set_flashflood_type
-  	$emergency_selected = "Flash Flood"
+    cookies[:emergency] = "Flash Flood"
   	redirect_to alert_message_path
   end
 
   def set_tsunami_type
-  	$emergency_selected = "Tsunami"
+    cookies[:emergency] = "Tsunami"
   	redirect_to alert_message_path
   end
 
   def set_missile_type
-  	$emergency_selected = "Missile"
+    cookies[:emergency] = "Missile"
   	redirect_to alert_message_path
   end
 
@@ -40,31 +40,34 @@ class PagesController < ApplicationController
 =end
 
   def wipe_alert_type
-    $alert_selected = ""
+    cookies[:alert] = ""
     redirect_to alert_type_path
   end
 
   def wipe_emergency_type
-    $emergency_selected = ""
+    cookies[:emergency] = ""
     redirect_to alert_path
   end
 
   def generate_message
-    @location = params[:location]
-    puts @location
-    puts "Generate Generic Message: "+"Please be advised. There is a "+$emergency_selected+" warning in effect for the areas: "+@location
+    cookies[:message] = ""
+    cookies[:message] = "Please be advised this is a "+ cookies[:alert] +" alert. There is a "+ cookies[:emergency] +" warning in effect for the areas: " + cookies[:locations]
+    redirect_to alert_message_path
+  end
+
+  def parse_comments
+    comments_from_form = params['myform']['comments']
+    #do your stuff with comments_from_form here
+    cookies[:locations] = comments_from_form
+    redirect_to alert_message_path
   end
 
   def create_alert
-    @message = params[:message]
-    @location = params[:location]
-
-    puts "_______________________________________________________________"
-
-    puts @message
-    puts @location
-    @alert = Alert.new(alert_type: $alert_selected, emergency_type: $emergency_selected, affected_areas: @location, alert_message: @message, user: $current_user, status: "active")
+    puts "____________________________________________________________"
+    puts cookies[:locations]
+    @alert = Alert.new(alert_type: cookies[:alert], emergency_type: cookies[:emergency], affected_areas: cookies[:locations], alert_message: cookies[:message], user: cookies[:username], status: "active")
     if @alert.save
+       @message = ""
       redirect_to reset_app_path
     else
       render 'new'

@@ -24,12 +24,15 @@ Rails.application.routes.draw do
 	get 'tsunami_button' => 'pages#set_tsunami_type'
 	get 'missile_button' => 'pages#set_missile_type'
   get 'create_alert'  => 'pages#create_alert'
-  get 'generate_message' => 'pages#generate_message'
 
   get 'redo_type' =>  'pages#wipe_alert_type'
 	get 'redo_emergency' => 'pages#wipe_emergency_type'
 
 	get 'reset_app' => 'application#reset_app'
+
+	get 'generate_message' => "pages#generate_message"
+  get 'parse_comments' => "pages#parse_comments"
+  post 'parse_comments' => "pages#parse_comments"
 
 	resources :accounts
 	resources :alert

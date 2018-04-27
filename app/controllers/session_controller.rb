@@ -5,6 +5,11 @@ class SessionController < ApplicationController
     Alert.all.each do |alert|
       puts alert.affected_areas
     end
+    cookies.delete :username
+    cookies.delete :alert
+    cookies.delete :emergency
+    cookies.delete :message
+    cookies[:locations] = " "
   end
 
 	def create
@@ -13,7 +18,7 @@ class SessionController < ApplicationController
 		account = Account.find_by(username: params[:session][:username])
 		if account && account.authenticate(params[:session][:password])
 			# log in
-			$current_user = account.username
+			cookies[:username] = account.username
 			redirect_to alert_type_path
 		else
 			redirect_to login_path
