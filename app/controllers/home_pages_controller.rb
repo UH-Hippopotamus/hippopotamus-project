@@ -1,5 +1,9 @@
-class HomePagesController < ApplicationController
+class HomePagesController < ApplicationController	
 
+	def home
+		@alerts = Alert.all.paginate(page: params[:page], per_page: 5).order(status: :asc, created_at: :asc)
+	end
+	
   def new
     cookies.delete :alert
     cookies.delete :emergency
@@ -8,10 +12,7 @@ class HomePagesController < ApplicationController
   end
 
   def deactivate
-    puts "________________________________________"
-    puts "DEACTIVATE BUTTON CLICKED"
     id = params[:id]
-    puts id
 
     alert = Alert.find_by(id: id)
     alert.status = "DEACTIVATED"
@@ -34,3 +35,4 @@ class HomePagesController < ApplicationController
   end
 
 end
+
