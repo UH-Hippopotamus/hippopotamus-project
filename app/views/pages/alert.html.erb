@@ -1,4 +1,4 @@
-<h1> <%= cookies[:alert] %> Alert</h1>
+<h1 style="color: white;"> <%= cookies[:alert] %> Alert</h1>
 
 <div class="jumbotron">
   <%= link_to "Landslide", landslide_button_path, class: "btn btn-primary btn-lg btn-block"%>
@@ -8,13 +8,13 @@
   <%= link_to "Tsunami", tsunami_button_path, class: "btn btn-primary btn-lg btn-block"%>
 
   <%= link_to "Ballistic missile", missile_button_path, class: "btn btn-primary btn-lg btn-block"%>
-</div>
 
-<%= link_to redo_type_path, class: "btn btn-primary" do %>
-	<span id="span">Back</span>
-<% end %> 
+	<div style="padding-top: 5px;">
+	<%= link_to redo_type_path, class: "btn btn-primary btn-lg" do %>Back<% end %>
+	</div>
+
+</div>
 
 <!--<span class="group-btn">
 	<%= link_to "Review alert", alert_message_path, class: "btn btn-primary pull-right"%>
 </span>-->
- 

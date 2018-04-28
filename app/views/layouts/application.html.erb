@@ -17,11 +17,11 @@
 				<nav>
 				</nav>
 			</div>
-			<div class="navbar-brand"> Logged In: <%= cookies[:username] %> </div>
-			<div class="navbar-brand"> Alert Type: <%= cookies[:alert] %> </div>
-			<div class="navbar-brand"> Emergency Type: <%= cookies[:emergency] %> </div>
-			<div class="navbar-brand, pull-right">
-			   <%= link_to "Log Out", reset_app_path, class: 'navbar-brand', style: 'margin-top: 5%' %>
+			<div class="navbar-brand" style="color: white;"> Logged In: <%= cookies[:username] %> </div>
+			<div class="navbar-brand" style="color: white;"> Alert Type: <%= cookies[:alert] %> </div>
+			<div class="navbar-brand" style="color: white;"> Emergency Type: <%= cookies[:emergency] %> </div>
+			<div class="navbar-brand, pull-right" style="color: white">
+			   <%= link_to "Log Out", reset_app_path, class: 'navbar-brand', style: 'margin-top: 5%; color: white;' %>
 			</div>
     </header>
 

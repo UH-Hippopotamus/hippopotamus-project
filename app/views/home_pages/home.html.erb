@@ -1,4 +1,4 @@
-<h1>Hippopotamus Alert System</h1>
+<h1 style="color: white">Hippopotamus Alert System</h1>
 
 <div class="jumbotron table-responsive">
   <span class="group-btn">
@@ -20,23 +20,42 @@
         </tr>
       </thead>
       <tbody>
-				<% @alerts.each do |alert| %>
-						<tr>
-						<td><%= alert.alert_type %></td>
-						<td><%= alert.emergency_type %></td>
-						<!-- <td><%= alert.affected_areas %></td> -->
-						<!-- <td><%= alert.alert_message %></td> -->
-						<td><%= alert.user %></td>
-						<td><%= alert.created_at %></td>
-						<td><%= alert.updated_at %></td>
-						<td><%= alert.status %></td>
-						<td><button type="submit" class="btn btn-primary btn-sm" style="line-height: 8px" >Deactivate</button></td>
-						<td><input type="hidden" name="id" value="<%= alert.id %>" ></td>
-						</tr>
-				<% end %>
+        <% Alert.order(status: :asc, created_at: :asc).each do |alert| %>
+          <form action="deactivate">
+            <tr>
+              <% if alert.status == "ACTIVE" %>
+              <td><%= alert.alert_type %></td>
+              <td><%= alert.emergency_type %></td>
+              <!-- <td><%= alert.affected_areas %></td> -->
+              <!-- <td><%= alert.alert_message %></td> -->
+              <td><%= alert.user %></td>
+              <td><%= alert.created_at %></td>
+              <td><%= alert.updated_at %></td>
+              <td><%= alert.status %></td>
+              <td><button type="submit" class="btn btn-primary btn-sm" style="line-height: 8px; background-color: red" >Deactivate</button></td>
+              <td><input type="hidden" name="id" value="<%= alert.id %>" ></td>
+              <% end %>
+            </tr>
+          </form>
+        <form action="activate">
+          <tr>
+            <% if alert.status == "DEACTIVATED" %>
+              <td><%= alert.alert_type %></td>
+              <td><%= alert.emergency_type %></td>
+              <!-- <td><%= alert.affected_areas %></td> -->
+              <!-- <td><%= alert.alert_message %></td> -->
+              <td><%= alert.user %></td>
+              <td><%= alert.created_at %></td>
+              <td><%= alert.updated_at %></td>
+              <td><%= alert.status %></td>
+              <td><button type="submit" class="btn btn-primary btn-sm" style="line-height: 8px; background-color: green" >Activate</button></td>
+              <td><input type="hidden" name="id" value="<%= alert.id %>" ></td>
+            <% end %>
+          </tr>
+        </form>
+        <% end %>
       </tbody>
     </table>
 		<%= will_paginate @alerts %>
   </div>
 </div>
-

@@ -6,11 +6,13 @@ class PagesController < ApplicationController
 
 	def set_alert_test
     cookies[:alert] = "TEST"
+    cookies[:message] = " "
 		redirect_to alert_path
 	end
 
 	def set_alert_live
     cookies[:alert] = "LIVE"
+    cookies[:message] = " "
 		redirect_to alert_path
   end
 
