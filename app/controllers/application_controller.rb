@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   $locations = @locations
 
   def reset_app
-    cookies.delete :username
-    cookies.delete :alert
-    cookies.delete :emergency
+    cookies[:username] = " "
+    cookies[:alert] = " "
+    cookies[:emergency] = " "
     cookies[:locations] = " "
     redirect_to login_path
   end

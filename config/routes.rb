@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 	delete  'logout' => 'session#destroy'
 
   get 'deactivate' => 'home_pages#deactivate'
+	get 'activate' => 'home_pages#activate'
 
 	get 'test_button' => 'pages#set_alert_test'
 	get 'live_button' => 'pages#set_alert_live'
