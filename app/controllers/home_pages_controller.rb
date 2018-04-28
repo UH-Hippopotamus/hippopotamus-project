@@ -1,7 +1,8 @@
-class HomePagesController < ApplicationController	
+class HomePagesController < ApplicationController
+  require 'will_paginate'
 
 	def home
-		@alerts = Alert.all.paginate(page: params[:page], per_page: 5).order(status: :asc, created_at: :asc)
+
 	end
 	
   def new
